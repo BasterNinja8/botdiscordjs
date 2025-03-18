@@ -71,7 +71,6 @@ client.once('ready', () => {
     console.log(`✅ Bot connecté en tant que ${client.user.tag}`);
 });
 
-// 📌 Gestion des commandes SLASH
 client.on('interactionCreate', async interaction => {
     if (!interaction.isCommand()) return;
 
@@ -85,9 +84,10 @@ client.on('interactionCreate', async interaction => {
         const memberRoles = interaction.member.roles.cache.map(role => role.name);
         const hasPrivilege = memberRoles.some(role => allowedRoles.includes(role));
 
+        // Vérification quotidienne sauf pour les rôles autorisés
         const userId = interaction.user.id;
         const currentDate = new Date().toDateString();
-        if (userLastCommandDate[userId] === currentDate) {
+        if (!hasPrivilege && userLastCommandDate[userId] === currentDate) {
             return interaction.reply({ content: "❌ Vous avez déjà utilisé `/up` aujourd'hui.", ephemeral: true });
         }
 
@@ -130,11 +130,13 @@ client.on('interactionCreate', async interaction => {
             stats[category] += increase;
         }
 
-        userLastCommandDate[userId] = currentDate;
+        // Enregistre l'utilisation de la commande uniquement si l'utilisateur n'a pas le rôle spécial
+        if (!hasPrivilege) {
+            userLastCommandDate[userId] = currentDate;
+        }
 
         const pilote = nomsPrenoms[pronom] || ["Inconnu", "Inconnu", "Inconnu", "Inconnu"];
         const [prenom, nom, sexe, categorie] = pilote;
-
 
         const noteGenerale = Math.round(Object.values(stats).reduce((sum, val) => sum + val, 0) / Object.values(stats).length);
 
@@ -182,11 +184,11 @@ client.on('interactionCreate', async interaction => {
 ------------------------------------------
 Besoin d’aide ? Merci de faire la commande \`/aide\`
 `;
-    
 
         await interaction.reply({ content: responseMessage });
     }
 });
+
 
 
 client.on('interactionCreate', async interaction => {
