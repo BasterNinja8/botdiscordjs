@@ -133,51 +133,50 @@ client.on('interactionCreate', async interaction => {
 
         const noteGenerale = Math.round(Object.values(stats).reduce((sum, val) => sum + val, 0) / Object.values(stats).length);
 
-        let responseMessage = `
-        # **DRIVER FICHE**
-        
-        **Nom pilote** : ${prenom} ${nom}
-        **Sexe** : ${sexe}
-        **Catégorie** : ${categorie}
-        
-        --------------------------
-        
-        
-        ┌
-                  ${noteGenerale}          NOTE
-                             générale
-        └
-        
-        ╭→     CON                    ${stats['con']}    ┐
-        ┊       concentration
-        ┊
-        ┊→     TRA                    ${stats['tra']}
-        ┊       trajectoire                   ┘
-        ╰
-        
-        ╭→     MEN                    ${stats['men']}       ┐
-        ┊       mentalité
-        ┊
-        ┊→     RÉA                    ${stats['réa']} 
-        ┊       réaction
-        ┊
-        ┊→     PRÉ                   ${stats['pré']}
-        ┊       précision                         ┘
-        ╰
-        
-        ╭
-        ┊→       NST                    ${stats['nst']}
-        ┊         no stress
-        ┊
-        ┊→       ENE                    ${stats['ene']}
-        ┊         energie
-        ╰
-       
-          ***OFFICIAL STATS***
-        
-        ------------------------------------------
-        Besoin d’aide ? Merci de faire la commande \`/aide\`
-                `;
+        let responseMessage = ` 
+# **DRIVER FICHE**
+
+**Nom pilote** : ${prenom} ${nom}
+**Sexe** : ${sexe}
+**Catégorie** : ${categorie}
+
+--------------------------
+
+┌
+          ${noteGenerale.toFixed(1)}          NOTE
+                     générale
+└
+
+╭→     CON                    ${stats['con'].toFixed(1)}    ┐
+┊       concentration
+┊
+┊→     TRA                    ${stats['tra'].toFixed(1)}
+┊       trajectoire                   ┘
+╰
+
+╭→     MEN                    ${stats['men'].toFixed(1)}       ┐
+┊       mentalité
+┊
+┊→     RÉA                    ${stats['réa'].toFixed(1)} 
+┊       réaction
+┊
+┊→     PRÉ                   ${stats['pré'].toFixed(1)}
+┊       précision                         ┘
+╰
+
+╭
+┊→       NST                    ${stats['nst'].toFixed(1)}
+┊         no stress
+┊
+┊→       ENE                    ${stats['ene'].toFixed(1)}
+┊         energie
+╰
+
+  ***OFFICIAL STATS***
+
+------------------------------------------
+Besoin d’aide ? Merci de faire la commande \`/aide\`
+`;
     
 
         await interaction.reply({ content: responseMessage });
