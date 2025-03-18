@@ -80,6 +80,11 @@ client.on('interactionCreate', async interaction => {
             return interaction.reply({ content: '❌ La commande `/up` est désactivée.', ephemeral: true });
         }
 
+        // Rôle autorisé à bypass la restriction
+        const allowedRoles = ['Staff du serveur']; // 🔹 Mets ici le nom du rôle qui peut faire autant de /up qu'il veut
+        const memberRoles = interaction.member.roles.cache.map(role => role.name);
+        const hasPrivilege = memberRoles.some(role => allowedRoles.includes(role));
+
         const userId = interaction.user.id;
         const currentDate = new Date().toDateString();
         if (userLastCommandDate[userId] === currentDate) {
