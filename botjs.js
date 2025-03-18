@@ -17,17 +17,17 @@ let userLastCommandDate = {};
 
 let statsGlobaux = {
     "KIM": {"con": 92.4, "tra": 89.8, "men": 90.0, "réa": 90.0, "pré": 90.0, "nst": 90.4, "ene": 89.5},
-    "BIA": {"con": 84.8, "tra": 84.8, "men": 83.8, "réa": 84.2, "pré": 84.0, "nst": 84.0, "ene": 84.0},
+    "BIA": {"con": 85.0, "tra": 85.0, "men": 83.8, "réa": 84.2, "pré": 84.0, "nst": 84.0, "ene": 84.0},
     "WIL": {"con": 82.2, "tra": 92.4, "men": 81.0, "réa": 82.0, "pré": 83.4, "nst": 81.0, "ene": 82.0},
     "NIA": {"con": 93.4, "tra": 87.0, "men": 87.0, "réa": 85.8, "pré": 85.8, "nst": 85.4, "ene": 85.4},
     "KOV": {"con": 94.6, "tra": 91.0, "men": 91.0, "réa": 91.0, "pré": 91.0, "nst": 91.0, "ene": 91.0},
     "AIE": {"con": 90.0, "tra": 100.0, "men": 90.0, "réa": 90.4, "pré": 85.0, "nst": 86.0, "ene": 85.0},
     "PAI": {"con": 84.8, "tra": 84.6, "men": 84.8, "réa": 84.6, "pré": 84.7, "nst": 84.7, "ene": 84.8},
-    "ROS": {"con": 92.1, "tra": 92.2, "men": 90.0, "réa": 90.4, "pré": 90.0, "nst": 90.0, "ene": 90.0},
+    "ROS": {"con": 92.1, "tra": 92.6, "men": 90.0, "réa": 90.4, "pré": 90.0, "nst": 90.0, "ene": 90.0},
     "LFE": {"con": 89.0, "tra": 91.0, "men": 89.0, "réa": 88.4, "pré": 88.2, "nst": 88.0, "ene": 88.2},
     "TFE": {"con": 89.4, "tra": 95.0, "men": 88.0, "réa": 87.6, "pré": 94.8, "nst": 89.4, "ene": 88.4},
     "CON": {"con": 89.0, "tra": 88.0, "men": 89.0, "réa": 88.0, "pré": 88.8, "nst": 89.6, "ene": 89.0},
-    "GAI": {"con": 81.0, "tra": 99.8, "men": 81.5, "réa": 83.3, "pré": 83.0, "nst": 81.0, "ene": 82.0},
+    "GAI": {"con": 81.0, "tra": 100.0, "men": 81.5, "réa": 83.9, "pré": 83.0, "nst": 81.0, "ene": 82.0},
     "HUL": {"con": 89.1, "tra": 87.6, "men": 88.1, "réa": 87.6, "pré": 88.1, "nst": 87.1, "ene": 88.0},
     "BEL": {"con": 88.4, "tra": 88.2, "men": 88.6, "réa": 88.8, "pré": 88.6, "nst": 87.0, "ene": 88.0},
     "PRO": {"con": 85.0, "tra": 84.0, "men": 86.0, "réa": 85.0, "pré": 84.4, "nst": 84.0, "ene": 84.6},
@@ -214,7 +214,7 @@ client.on('interactionCreate', async interaction => {
     if (!interaction.isCommand()) return;
 
     if (interaction.commandName === 'fiche') {
-        const allowedRoles = ['1351488329916354560']; // Remplace par l'ID du rôle autorisé
+        const allowedRoles = ['1138098099613602013']; // Remplace par l'ID du rôle autorisé
         const memberRoles = interaction.member.roles.cache.map(role => role.id);
         
         // Vérification des permissions
@@ -250,28 +250,28 @@ client.on('interactionCreate', async interaction => {
                              générale
         └
         
-        ╭→     CON                    ${stats['con']}    ┐
+        ╭→     CON                    ${stats['con'].toFixed(1)}    ┐
         ┊       concentration
         ┊
-        ┊→     TRA                    ${stats['tra']}
+        ┊→     TRA                    ${stats['tra'].toFixed(1)}
         ┊       trajectoire                   ┘
         ╰
         
-        ╭→     MEN                    ${stats['men']}       ┐
+        ╭→     MEN                    ${stats['men'].toFixed(1)}       ┐
         ┊       mentalité
         ┊
-        ┊→     RÉA                    ${stats['réa']} 
+        ┊→     RÉA                    ${stats['réa'].toFixed(1)} 
         ┊       réaction
         ┊
-        ┊→     PRÉ                   ${stats['pré']}
+        ┊→     PRÉ                   ${stats['pré'].toFixed(1)}
         ┊       précision                         ┘
         ╰
         
         ╭
-        ┊→       NST                    ${stats['nst']}
+        ┊→       NST                    ${stats['nst'].toFixed(1)}
         ┊         no stress
         ┊
-        ┊→       ENE                    ${stats['ene']}
+        ┊→       ENE                    ${stats['ene'].toFixed(1)}
         ┊         energie
         ╰
        
