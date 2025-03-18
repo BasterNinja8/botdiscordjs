@@ -6,7 +6,7 @@ app.get('/', (req, res) => {
 });
 
 function keepAlive() {
-    app.listen(3000, () => {
+    app.listen(1000, () => {
         console.log('🚀 Serveur en ligne sur le port 3000 !');
     });
 }
