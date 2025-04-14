@@ -16,12 +16,12 @@ let upBloque = false;
 let userLastCommandDate = {};
 
 let statsGlobaux = {
-    "KIM": {"con": 92.8, "tra": 91.0, "men": 90.0, "réa": 90.0, "pré": 90.0, "nst": 90.4, "ene": 89.5},
-    "NUN": {"con": 85.4, "tra": 92.0, "men": 85.0, "réa": 86.0, "pré": 88.0, "nst": 85.2, "ene": 85.0},
-    "NIA": {"con": 94.4, "tra": 89.4, "men": 87.0, "réa": 85.8, "pré": 86.2, "nst": 85.4, "ene": 85.4},
-    "WIL": {"con": 82.2, "tra": 96.4, "men": 81.0, "réa": 82.0, "pré": 83.4, "nst": 81.0, "ene": 82.0},
-    "KOV": {"con": 97.8, "tra": 91.0, "men": 91.0, "réa": 91.0, "pré": 91.0, "nst": 91.0, "ene": 91.0},
-    "AIE": {"con": 90.0, "tra": 100.0, "men": 90.0, "réa": 94.4, "pré": 85.0, "nst": 86.0, "ene": 85.0},
+    "KIM": {"con": 92.8, "tra": 91.0, "men": 91.2, "réa": 91.2, "pré": 90.8, "nst": 90.4, "ene": 89.5},
+    "NUN": {"con": 85.4, "tra": 94.4, "men": 85.0, "réa": 86.4, "pré": 90.0, "nst": 85.2, "ene": 85.0},
+    "NIA": {"con": 95.0, "tra": 92.4, "men": 88.2, "réa": 85.8, "pré": 86.2, "nst": 85.4, "ene": 85.4},
+    "WIL": {"con": 83.2, "tra": 99.8, "men": 81.0, "réa": 82.0, "pré": 83.4, "nst": 81.0, "ene": 82.0},
+    "KOV": {"con": 99.8, "tra": 92.8, "men": 91.2, "réa": 91.0, "pré": 91.0, "nst": 91.0, "ene": 91.0},
+    "AIE": {"con": 90.0, "tra": 100.0, "men": 90.0, "réa": 99.2, "pré": 85.0, "nst": 86.0, "ene": 85.0},
     "ROS": {"con": 93.0, "tra": 93.0, "men": 90.5, "réa": 91.0, "pré": 90.0, "nst": 90.0, "ene": 90.0},
     "PAI": {"con": 85.2, "tra": 85.4, "men": 85.2, "réa": 85.1, "pré": 85.1, "nst": 85.1, "ene": 85.2},
     "LFE": {"con": 89.0, "tra": 91.0, "men": 89.0, "réa": 88.4, "pré": 88.2, "nst": 88.0, "ene": 88.2},
@@ -318,35 +318,42 @@ Ici, les stats **men** et **tra** seront améliorées de **+0.2** chacune.
 
 client.on('interactionCreate', async interaction => {
     if (!interaction.isCommand()) return;
+if (interaction.commandName === 'bloquerup') {
+        const allowedRoles = ['Staff du serveur']; // 🔹 Ajoute ici les rôles autorisés
 
-    if (interaction.commandName === 'stats') {
-        const pronom = interaction.options.getString('pronom').toUpperCase();
-
-        const allowedRoles = ['ROLE_ID_1', 'ROLE_ID_2']; // Remplace par les vrais ID de rôles
-
-        // Vérifie si l'utilisateur a au moins un des rôles autorisés
-        const hasRole = interaction.member.roles.cache.some(role => allowedRoles.includes(role.id));
-
-        if (!statsGlobaux[pronom]) {
-            return interaction.reply(`❌ Le pilote '${pronom}' n'existe pas.`);
+        // Vérifie si l'utilisateur possède un des rôles autorisés
+        const memberRoles = interaction.member.roles.cache.map(role => role.name);
+        if (!memberRoles.some(role => allowedRoles.includes(role))) {
+            return interaction.reply({ content: "❌ Vous n'avez pas la permission d'utiliser cette commande.", ephemeral: true });
         }
-
-        const piloteStats = statsGlobaux[pronom];
-        const statsValues = Object.values(piloteStats);
-
-        // Calcul des moyennes pour Force et Agression
-        const force = Math.round((statsValues[0] + statsValues[1] + statsValues[2] + statsValues[3]) / 4);
-        const agression = Math.round((statsValues[4] + statsValues[5] + statsValues[6]) / 3);
-
-        // Création du message
-        const message = `
-📊 **Stats calculées de ${pronom}**  
-💪 **Force** : ${force}  
-🔥 **Agression** : ${agression}
-        `;
-
-        await interaction.reply(message);
-    }
+        if (interaction.commandName === 'stats') {
+            const pronom = interaction.options.getString('pronom').toUpperCase();
+    
+            const allowedRoles = ['ROLE_ID_1', 'ROLE_ID_2']; // Remplace par les vrais ID de rôles
+    
+            // Vérifie si l'utilisateur a au moins un des rôles autorisés
+            const hasRole = interaction.member.roles.cache.some(role => allowedRoles.includes(role.id));
+    
+            if (!statsGlobaux[pronom]) {
+                return interaction.reply(`❌ Le pilote '${pronom}' n'existe pas.`);
+            }
+    
+            const piloteStats = statsGlobaux[pronom];
+            const statsValues = Object.values(piloteStats);
+    
+            // Calcul des moyennes pour Force et Agression
+            const force = Math.round((statsValues[0] + statsValues[1] + statsValues[2] + statsValues[3]) / 4);
+            const agression = Math.round((statsValues[4] + statsValues[5] + statsValues[6]) / 3);
+    
+            // Création du message
+            const message = `
+    📊 **Stats calculées de ${pronom}**  
+    💪 **Force** : ${force}  
+    🔥 **Agression** : ${agression}
+            `;
+    
+            await interaction.reply(message);
+        }
 });
 
 
