@@ -356,7 +356,7 @@ if (interaction.commandName === 'bloquerup') {
     
             await interaction.reply(message);
         }
-};
+}});
 
 
 // 📌 Enregistrement des commandes SLASH
