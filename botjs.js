@@ -396,7 +396,7 @@ client.on('interactionCreate', async interaction => {
 
         await interaction.reply(message);
     }
-});
+};
 
 // 📌 Enregistrement des commandes SLASH
 const commands = [
