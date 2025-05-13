@@ -74,6 +74,11 @@ let nomsPrenoms = {
     "MED": ["Léo", "Médo", "Homme", "Formula One"],
     "WIN": ["Kurt", "Winkler", "Homme", "Formula Two"],
     "END": ["Félix", "Ender", "Homme", "Formula One"]
+    "AWK": ["Lewis", "Awkins", "Homme", "Formula Two"],
+    "AYV": ["Soraya", "Ayvaz Mutut", "Homme", "Formula Two"],
+    "GAE": ["Hadjar", "Gaetan", "Homme", "Formula Two"],
+    "AME": ["Antoine", "Médo", "Homme", "Formula Two"],
+    "BRO": ["Gabriel", "Broniszweski", "Homme", "Formula Two"],
 };
 
 
