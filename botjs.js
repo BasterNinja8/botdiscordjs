@@ -447,15 +447,24 @@ const commands = [
         options: [
             {
                 name: 'pronom',
-                type: 'STRING',
+                type: 3, // ✅ STRING
                 description: 'Le nom du pilote',
                 required: true
             },
             {
                 name: 'mode',
-                type: 'INTEGER',
+                type: 4, // ✅ INTEGER
                 description: 'Mode de calcul (1 à 7)',
-                required: true
+                required: true,
+                choices: [
+                    { name: 'Mode 1', value: 1 },
+                    { name: 'Mode 2', value: 2 },
+                    { name: 'Mode 3', value: 3 },
+                    { name: 'Mode 4', value: 4 },
+                    { name: 'Mode 5', value: 5 },
+                    { name: 'Mode 6', value: 6 },
+                    { name: 'Mode 7', value: 7 },
+                ]
             }
         ]
     }
