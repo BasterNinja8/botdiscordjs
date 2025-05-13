@@ -73,7 +73,7 @@ let nomsPrenoms = {
     "GRO": ["Alex", "Groël", "Homme", "Formula One"],
     "MED": ["Léo", "Médo", "Homme", "Formula One"],
     "WIN": ["Kurt", "Winkler", "Homme", "Formula Two"],
-    "END": ["Félix", "Ender", "Homme", "Formula One"]
+    "END": ["Félix", "Ender", "Homme", "Formula One"],
     "AWK": ["Lewis", "Awkins", "Homme", "Formula Two"],
     "AYV": ["Soraya", "Ayvaz Mutut", "Homme", "Formula Two"],
     "GAE": ["Hadjar", "Gaetan", "Homme", "Formula Two"],
