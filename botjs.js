@@ -323,42 +323,76 @@ Ici, les stats **men** et **tra** seront améliorées de **+0.2** chacune.
 client.on('interactionCreate', async interaction => {
     if (!interaction.isCommand()) return;
     if (interaction.commandName === 'stats') {
-        const allowedRoles = ['Staff du serveur']; // 🔹 Ajoute ici les rôles autorisés
+        const allowedRoles = ['Staff du serveur'];
 
-        // Vérifie si l'utilisateur possède un des rôles autorisés
         const memberRoles = interaction.member.roles.cache.map(role => role.name);
         if (!memberRoles.some(role => allowedRoles.includes(role))) {
             return interaction.reply({ content: "❌ Vous n'avez pas la permission d'utiliser cette commande.", ephemeral: true });
         }
-        if (interaction.commandName === 'stats') {
-            const pronom = interaction.options.getString('pronom').toUpperCase();
-    
-            const allowedRoles = ['ROLE_ID_1', 'ROLE_ID_2']; // Remplace par les vrais ID de rôles
-    
-            // Vérifie si l'utilisateur a au moins un des rôles autorisés
-            const hasRole = interaction.member.roles.cache.some(role => allowedRoles.includes(role.id));
-    
-            if (!statsGlobaux[pronom]) {
-                return interaction.reply(`❌ Le pilote '${pronom}' n'existe pas.`);
-            }
-    
-            const piloteStats = statsGlobaux[pronom];
-            const statsValues = Object.values(piloteStats);
-    
-            // Calcul des moyennes pour Force et Agression
-            const force = Math.round((statsValues[0] + statsValues[1] + statsValues[2] + statsValues[3]) / 4);
-            const agression = Math.round((statsValues[4] + statsValues[5] + statsValues[6]) / 3);
-    
-            // Création du message
-            const message = `
-    📊 **Stats calculées de ${pronom}**  
-    💪 **Force** : ${force}  
-    🔥 **Agression** : ${agression}
-            `;
-    
-            await interaction.reply(message);
+
+        // Récupère les options
+        const pronom = interaction.options.getString('pronom'); // Assure-toi que 'pronom' est bien défini dans la commande
+        const mode = interaction.options.getInteger('mode');    // Assure-toi que 'mode' est un nombre entre 1 et 7
+
+        if (!statsGlobaux[pronom]) {
+            return interaction.reply(`❌ Le pilote '${pronom}' n'existe pas.`);
         }
-}});
+
+        const stats = statsGlobaux[pronom];
+
+        let force = 0;
+        let agression = 0;
+
+        switch (mode) {
+            case 1:
+                force = moyenne(stats, [0, 1, 2, 3]);
+                agression = moyenne(stats, [4, 5, 6]);
+                break;
+            case 2:
+                force = moyenne(stats, [1, 2, 3, 4]);
+                agression = moyenne(stats, [0, 5, 6]);
+                break;
+            case 3:
+                force = moyenne(stats, [2, 3, 4, 5]);
+                agression = moyenne(stats, [0, 1, 6]);
+                break;
+            case 4:
+                force = moyenne(stats, [0, 2, 4, 6]);
+                agression = moyenne(stats, [1, 3, 5]);
+                break;
+            case 5:
+                force = moyenne(stats, [0, 1, 5, 6]);
+                agression = moyenne(stats, [2, 3, 4]);
+                break;
+            case 6:
+                force = moyenne(stats, [0, 3, 4, 6]);
+                agression = moyenne(stats, [1, 2, 5]);
+                break;
+            case 7:
+                force = moyenne(stats, [1, 2, 4, 5]);
+                agression = moyenne(stats, [0, 3, 6]);
+                break;
+            default:
+                return interaction.reply({ content: "❌ Mode invalide. Choisissez un nombre entre 1 et 7.", ephemeral: true });
+        }
+
+        const message = `
+📊 **Stats calculées de ${pronom} (Mode ${mode})**  
+💪 **Force** : ${force}  
+🔥 **Agression** : ${agression}
+        `;
+
+        await interaction.reply(message);
+    }
+});
+
+// Fonction utilitaire pour calculer une moyenne
+function moyenne(stats, indices) {
+    const values = indices.map(i => stats[i]);
+    const sum = values.reduce((a, b) => a + b, 0);
+    return Math.round(sum / values.length);
+}
+
 
 
 // 📌 Enregistrement des commandes SLASH
@@ -409,18 +443,25 @@ const commands = [
     },
     {
         name: 'stats',
-        description: 'Affiche les stats d’un pilote',
+        description: 'Affiche les stats d\'un pilote',
         options: [
             {
                 name: 'pronom',
-                type: 3, // STRING
-                description: 'Pronom du pilote',
+                type: 'STRING',
+                description: 'Le nom du pilote',
+                required: true
+            },
+            {
+                name: 'mode',
+                type: 'INTEGER',
+                description: 'Mode de calcul (1 à 7)',
                 required: true
             }
         ]
-    },
-    
+    }
 ];
+
+
 
 const rest = new REST({ version: '10' }).setToken(token);
 
