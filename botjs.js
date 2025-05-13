@@ -339,50 +339,56 @@ client.on('interactionCreate', async interaction => {
         }
 
         const stats = statsGlobaux[pronom];
-
-        let force = 0;
-        let agression = 0;
-
-        switch (mode) {
-            case 1:
-                force = moyenne(stats, [0, 1, 2, 3]);
-                agression = moyenne(stats, [4, 5, 6]);
-                break;
-            case 2:
-                force = moyenne(stats, [1, 2, 3, 4]);
-                agression = moyenne(stats, [0, 5, 6]);
-                break;                
-            case 3:
-                force = moyenne(stats, [2, 3, 4, 5]);
-                agression = moyenne(stats, [0, 1, 6]);
-                break;
-            case 4:
-                force = moyenne(stats, [0, 2, 4, 6]);
-                agression = moyenne(stats, [1, 3, 5]);
-                break;
-            case 5:
-                force = moyenne(stats, [0, 1, 5, 6]);
-                agression = moyenne(stats, [2, 3, 4]);
-                break;
-            case 6:
-                force = moyenne(stats, [0, 3, 4, 6]);
-                agression = moyenne(stats, [1, 2, 5]);
-                break;
-            case 7:
-                force = moyenne(stats, [1, 2, 4, 5]);
-                agression = moyenne(stats, [0, 3, 6]);
-                break;
-            default:
-                return interaction.reply({ content: "❌ Mode invalide. Choisissez un nombre entre 1 et 7.", ephemeral: true });
+        // Vérifier si les données existent pour ce joueur
+        if (!statsGlobaux[pronom]) {
+            return interaction.reply({ content: `❌ Aucune donnée trouvée pour ${pronom}.`, ephemeral: true });
         }
 
-        function moyenne(stats, indices) {
-        const values = indices.map(i => stats[i]).filter(v => typeof v === 'number');
-        if (values.length === 0) return 0;
-        const sum = values.reduce((a, b) => a + b, 0);
-        return Math.round(sum / values.length);
-        }
+        const stats = statsGlobaux[pronom];
         
+        // Récupérer les 7 valeurs (con, tra, men, réa, pré, nst, ene)
+        const statsArray = [
+            stats.con, stats.tra, stats.men, stats.réa, stats.pré, stats.nst, stats.ene
+        ];
+        
+        // Calcul des moyennes pour chaque mode
+        let result = `📊 **Stats calculées de ${pronom} (Mode 1 à 7)**\n`;
+
+        for (let mode = 1; mode <= 7; mode++) {
+            let force, agression;
+    
+            // Calcul en fonction du mode
+            if (mode === 1) {
+                // Mode 1: 4 premières pour force, 3 dernières pour agression
+                force = (statsArray[0] + statsArray[1] + statsArray[2] + statsArray[3]) / 4;
+                agression = (statsArray[4] + statsArray[5] + statsArray[6]) / 3;
+            } else if (mode === 2) {
+                // Mode 2: 1ère pour agression, 2 dernières pour force, 4 autres pour force
+                force = (statsArray[1] + statsArray[2] + statsArray[3] + statsArray[4]) / 4;
+                agression = (statsArray[0] + statsArray[5] + statsArray[6]) / 3;
+            } else if (mode === 3) {
+                // Mode 3: 2 premières pour agression, 1ère et 3 autres pour force
+                force = (statsArray[0] + statsArray[1] + statsArray[4] + statsArray[5]) / 4;
+                agression = (statsArray[2] + statsArray[3] + statsArray[6]) / 3;
+            } else if (mode === 4) {
+                // Mode 4: 3 premières pour agression, 4 autres pour force
+                force = (statsArray[0] + statsArray[1] + statsArray[2] + statsArray[3]) / 4;
+                agression = (statsArray[4] + statsArray[5] + statsArray[6]) / 3;
+            } else if (mode === 5) {
+                // Mode 5: 4 premières pour force, 3 autres pour agression
+                force = (statsArray[0] + statsArray[1] + statsArray[2] + statsArray[3]) / 4;
+                agression = (statsArray[4] + statsArray[5] + statsArray[6]) / 3;
+            } else if (mode === 6) {
+                // Mode 6: Décale encore et applique les moyennes
+                force = (statsArray[0] + statsArray[1] + statsArray[4] + statsArray[5]) / 4;
+                agression = (statsArray[2] + statsArray[3] + statsArray[6]) / 3;
+            } else if (mode === 7) {
+                // Mode 7: Dernière variation
+                force = (statsArray[0] + statsArray[1] + statsArray[2] + statsArray[3]) / 4;
+                agression = (statsArray[4] + statsArray[5] + statsArray[6]) / 3;
+            }
+    
+      
 
         const message = `
 📊 **Stats calculées de ${pronom} (Mode ${mode})**  
