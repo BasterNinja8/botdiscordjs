@@ -16,48 +16,55 @@ let upBloque = false;
 let userLastCommandDate = {};
 
 let statsGlobaux = {
-    "KIM": {"con": 92.8, "tra": 91.8, "men": 91.2, "réa": 91.2, "pré": 91.2, "nst": 91.2, "ene": 91.1},
-    "NUN": {"con": 87.8, "tra": 96.0, "men": 85.0, "réa": 86.4, "pré": 90.0, "nst": 85.2, "ene": 85.0},
-    "NIA": {"con": 96.8, "tra": 93.0, "men": 89.0, "réa": 87.0, "pré": 86.2, "nst": 85.4, "ene": 85.4},
-    "WIL": {"con": 86.4, "tra": 99.8, "men": 81.0, "réa": 82.0, "pré": 83.4, "nst": 81.0, "ene": 82.0},
-    "KOV": {"con": 99.8, "tra": 96.8, "men": 91.2, "réa": 91.0, "pré": 91.0, "nst": 91.0, "ene": 91.0},
-    "AIE": {"con": 90.0, "tra": 100.0, "men": 93.6, "réa": 99.2, "pré": 85.0, "nst": 86.0, "ene": 85.0},
-    "ROS": {"con": 96.0, "tra": 95.4, "men": 92.0, "réa": 92.0, "pré": 90.0, "nst": 90.0, "ene": 90.0},
-    "PAI": {"con": 86.4, "tra": 86.2, "men": 86.4, "réa": 86.3, "pré": 86.3, "nst": 86.3, "ene": 86.4},
-    "LFE": {"con": 89.0, "tra": 91.0, "men": 89.0, "réa": 88.4, "pré": 88.2, "nst": 88.0, "ene": 88.2},
-    "TFE": {"con": 90.4, "tra": 99.4, "men": 88.6, "réa": 88.4, "pré": 99.2, "nst": 90.0, "ene": 88.6},
-    "CON": {"con": 91.0, "tra": 90.0, "men": 91.0, "réa": 90.0, "pré": 90.0, "nst": 90.8, "ene": 91.0},
-    "GAI": {"con": 81.0, "tra": 100.0, "men": 81.5, "réa": 96.3, "pré": 83.0, "nst": 81.0, "ene": 82.0},
-    "HUL": {"con": 89.1, "tra": 89.2, "men": 89.2, "réa": 89.3, "pré": 88.9, "nst": 89.1, "ene": 89.6},
-    "BEL": {"con": 90.8, "tra": 91.0, "men": 90.6, "réa": 90.8, "pré": 90.6, "nst": 87.4, "ene": 88.0},
-    "PRO": {"con": 85.0, "tra": 84.0, "men": 86.0, "réa": 85.0, "pré": 84.4, "nst": 84.0, "ene": 85.4},
-    "BIA": {"con": 89.0, "tra": 89.0, "men": 83.8, "réa": 84.2, "pré": 84.4, "nst": 84.0, "ene": 84.0},
-    "BIL": {"con": 88.6, "tra": 88.2, "men": 88.2, "réa": 88.2, "pré": 88.2, "nst": 88.2, "ene": 88.6},
-    "NIT": {"con": 86.0, "tra": 90.0, "men": 84.8, "réa": 84.0, "pré": 84.8, "nst": 84.8, "ene": 84.4},
-    "DIA": {"con": 88.0, "tra": 99.8, "men": 88.0, "réa": 91.0, "pré": 84.0, "nst": 84.0, "ene": 84.0},
-    "THE": {"con": 92.0, "tra": 93.0, "men": 88.0, "réa": 90.8, "pré": 88.0, "nst": 89.0, "ene": 88.0},
-    "GRO": {"con": 86.0, "tra": 87.4, "men": 85.4, "réa": 87.0, "pré": 84.0, "nst": 85.0, "ene": 84.0},
-    "MED": {"con": 90.0, "tra": 90.0, "men": 91.0, "réa": 90.0, "pré": 90.2, "nst": 90.4, "ene": 91.2},
-    "PRY": {"con": 87.9, "tra": 87.9, "men": 87.9, "réa": 87.9, "pré": 87.9, "nst": 87.5, "ene": 87.5},
-    "END": {"con": 92.4, "tra": 90.0, "men": 90.0, "réa": 90.0, "pré": 88.0, "nst": 88.0, "ene": 88.0}
+    "KIM": {"con": 88.0, "tra": 88.0, "men": 88.0, "réa": 88.0, "pré": 88.0, "nst": 88.0, "ene": 88.0},
+    "KOV": {"con": 88.0, "tra": 88.0, "men": 88.0, "réa": 88.0, "pré": 88.0, "nst": 88.0, "ene": 88.0},
+    "DIA": {"con": 87.0, "tra": 87.0, "men": 87.0, "réa": 87.0, "pré": 87.0, "nst": 87.0, "ene": 87.0},
+    "MED": {"con": 87.0, "tra": 87.0, "men": 87.0, "réa": 87.0, "pré": 87.0, "nst": 87.0, "ene": 87.0},
+    "THE": {"con": 87.0, "tra": 87.0, "men": 87.0, "réa": 87.0, "pré": 87.0, "nst": 87.0, "ene": 87.0},
+    "ROS": {"con": 88.0, "tra": 88.0, "men": 88.0, "réa": 88.0, "pré": 88.0, "nst": 88.0, "ene": 88.0},
+    "AIE": {"con": 88.0, "tra": 88.0, "men": 88.0, "réa": 88.0, "pré": 88.0, "nst": 88.0, "ene": 88.0},
+    "FER": {"con": 87.5, "tra": 87.5, "men": 87.5, "réa": 87.5, "pré": 87.5, "nst": 87.5, "ene": 87.5},
+    "NIA": {"con": 86.5, "tra": 86.5, "men": 86.5, "réa": 86.5, "pré": 86.5, "nst": 86.5, "ene": 86.5},
+    "GAS": {"con": 85.0, "tra": 85.0, "men": 85.0, "réa": 85.0, "pré": 85.0, "nst": 85.0, "ene": 85.0},
+    "GRO": {"con": 86.0, "tra": 86.0, "men": 86.0, "réa": 86.0, "pré": 86.0, "nst": 86.0, "ene": 86.0},
+    "BIL": {"con": 85.5, "tra": 85.5, "men": 85.5, "réa": 85.5, "pré": 85.5, "nst": 85.5, "ene": 85.5},
+    "BEL": {"con": 86.5, "tra": 86.5, "men": 86.5, "réa": 86.5, "pré": 86.5, "nst": 86.5, "ene": 86.5},
+    "VER": {"con": 84.5, "tra": 84.5, "men": 84.5, "réa": 84.5, "pré": 84.5, "nst": 84.5, "ene": 84.5},
+    "CON": {"con": 87.0, "tra": 87.0, "men": 87.0, "réa": 87.0, "pré": 87.0, "nst": 87.0, "ene": 87.0},
+    "GAI": {"con": 86.0, "tra": 86.0, "men": 86.0, "réa": 86.0, "pré": 86.0, "nst": 86.0, "ene": 86.0},
+    "NIT": {"con": 85.0, "tra": 85.0, "men": 85.0, "réa": 85.0, "pré": 85.0, "nst": 85.0, "ene": 85.0},
+    "HUL": {"con": 86.5, "tra": 86.5, "men": 86.5, "réa": 86.5, "pré": 86.5, "nst": 86.5, "ene": 86.5},
+    "END": {"con": 86.5, "tra": 86.5, "men": 86.5, "réa": 86.5, "pré": 86.5, "nst": 86.5, "ene": 86.5},
+    "NUN": {"con": 85.5, "tra": 85.5, "men": 85.5, "réa": 85.5, "pré": 85.5, "nst": 85.5, "ene": 85.5},
+    "LAU": {"con": 83.0, "tra": 83.0, "men": 83.0, "réa": 83.0, "pré": 83.0, "nst": 83.0, "ene": 83.0},
+    "SAN": {"con": 84.0, "tra": 84.0, "men": 84.0, "réa": 84.0, "pré": 84.0, "nst": 84.0, "ene": 84.0},
+    "CRI": {"con": 83.0, "tra": 83.0, "men": 83.0, "réa": 83.0, "pré": 83.0, "nst": 83.0, "ene": 83.0},
+    "WIN": {"con": 83.0, "tra": 83.0, "men": 83.0, "réa": 83.0, "pré": 83.0, "nst": 83.0, "ene": 83.0},
+    "AWK": {"con": 82.5, "tra": 82.5, "men": 82.5, "réa": 82.5, "pré": 82.5, "nst": 82.5, "ene": 82.5},
+    "AYV": {"con": 83.0, "tra": 83.0, "men": 83.0, "réa": 83.0, "pré": 83.0, "nst": 83.0, "ene": 83.0},
+    "BIA": {"con": 84.0, "tra": 84.0, "men": 84.0, "réa": 84.0, "pré": 84.0, "nst": 84.0, "ene": 84.0},
+    "WIL": {"con": 83.5, "tra": 83.5, "men": 83.5, "réa": 83.5, "pré": 83.5, "nst": 83.5, "ene": 83.5},
+    "GAE": {"con": 82.5, "tra": 82.5, "men": 82.5, "réa": 82.5, "pré": 82.5, "nst": 82.5, "ene": 82.5},
+    "AME": {"con": 82.5, "tra": 82.5, "men": 82.5, "réa": 82.5, "pré": 82.5, "nst": 82.5, "ene": 82.5},
+    "BRO": {"con": 82.0, "tra": 82.0, "men": 82.0, "réa": 82.0, "pré": 82.0, "nst": 82.0, "ene": 82.0}
 };
 
 let nomsPrenoms = {
     "KIM": ["Hae Won", "Kim", "Femme", "Formula One"],
-    "BIA": ["Charles", "Bianchi", "Homme", "Formula One"],
-    "WIL": ["Leclerc", "Wilveur", "Homme", "Formula One"],
+    "BIA": ["Charles", "Bianchi", "Homme", "Formula Two"],
+    "WIL": ["Leclerc", "Wilveur", "Homme", "Formula Two"],
     "NIA": ["Lewis", "Niamate", "Homme", "Formula One"],
     "KOV": ["Riin", "Kovac", "Homme", "Formula One"],
     "AIE": ["Allessandro", "Aiello", "Homme", "Formula One"],
-    "PAI": ["Oscar", "Paistra", "Homme", "Formula One"],
+    "VER": ["Loyd", "Verstappen", "Homme", "Formula One"],
     "ROS": ["Oscar", "Rosberg", "Homme", "Formula One"],
-    "LFE": ["Luis", "Fernand", "Homme", "Formula One"],
-    "TFE": ["Tom", "Fernandez", "Homme", "Formula One"],
+    "GAS": ["Léo", "Gasly", "Homme", "Formula One"],
+    "FER": ["Tom", "Fernandez", "Homme", "Formula One"],
     "CON": ["Noah", "Connor", "Homme", "Formula One"],
     "GAI": ["Gabriele", "Aiello", "Homme", "Formula One"],
     "HUL": ["Justin", "Huler", "Homme", "Formula One"],
     "BEL": ["Marc-Antoine", "Belmondini", "Homme", "Formula One"],
-    "PRO": ["Alain", "Proviste", "Homme", "Formula One"],
+    "CRI": ["Crio", "Crionidas", "Homme", "Formula Two"],
     "NUN": ["Rio", "Nuno", "Homme", "Formula One"],
     "BIL": ["Jakie", "Biloutte", "Homme", "Formula One"],
     "NIT": ["Trivality", "Nitrox", "Homme", "Formula One"],
@@ -65,7 +72,7 @@ let nomsPrenoms = {
     "THE": ["Tome", "Théo", "Homme", "Formula One"],
     "GRO": ["Alex", "Groël", "Homme", "Formula One"],
     "MED": ["Léo", "Médo", "Homme", "Formula One"],
-    "PRY": ["Andreas", "Pryviat", "Homme", "Formula One"],
+    "WIN": ["Kurt", "Winkler", "Homme", "Formula Two"],
     "END": ["Félix", "Ender", "Homme", "Formula One"]
 };
 
@@ -366,28 +373,28 @@ client.on('interactionCreate', async interaction => {
         } 
         if (mode === 3) {
             // Mode 3: 2 premières pour agression, 1ère et 3 autres pour force
-            force = (statsArray[0] + statsArray[1] + statsArray[4] + statsArray[5]) / 4;
-            agression = (statsArray[2] + statsArray[3] + statsArray[6]) / 3;
+            force = (statsArray[2] + statsArray[3] + statsArray[4] + statsArray[5]) / 4;
+            agression = (statsArray[0] + statsArray[1] + statsArray[6]) / 3;
         } 
         if (mode === 4) {
             // Mode 4: 3 premières pour agression, 4 autres pour force
-            force = (statsArray[0] + statsArray[1] + statsArray[2] + statsArray[3]) / 4;
-            agression = (statsArray[4] + statsArray[5] + statsArray[6]) / 3;
+            force = (statsArray[3] + statsArray[4] + statsArray[5] + statsArray[6]) / 4;
+            agression = (statsArray[0] + statsArray[1] + statsArray[2]) / 3;
         }
         if (mode === 5) {
              // Mode 5: 4 premières pour force, 3 autres pour agression
-            force = (statsArray[0] + statsArray[1] + statsArray[2] + statsArray[3]) / 4;
-            agression = (statsArray[4] + statsArray[5] + statsArray[6]) / 3;
+            force = (statsArray[4] + statsArray[5] + statsArray[6] + statsArray[0]) / 4;
+            agression = (statsArray[1] + statsArray[2] + statsArray[3]) / 3;
         }
         if (mode === 6) {
             // Mode 6: Décale encore et applique les moyennes
-            force = (statsArray[0] + statsArray[1] + statsArray[4] + statsArray[5]) / 4;
-            agression = (statsArray[2] + statsArray[3] + statsArray[6]) / 3;
+            force = (statsArray[5] + statsArray[6] + statsArray[0] + statsArray[1]) / 4;
+            agression = (statsArray[2] + statsArray[3] + statsArray[4]) / 3;
         } 
         if (mode === 7) {
             // Mode 7: Dernière variation
-            force = (statsArray[0] + statsArray[1] + statsArray[2] + statsArray[3]) / 4;
-            agression = (statsArray[4] + statsArray[5] + statsArray[6]) / 3;
+            force = (statsArray[6] + statsArray[0] + statsArray[1] + statsArray[2]) / 4;
+            agression = (statsArray[4] + statsArray[5] + statsArray[3]) / 3;
         }
     
       
