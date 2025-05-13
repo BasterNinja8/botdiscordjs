@@ -393,15 +393,6 @@ client.on('interactionCreate', async interaction => {
     }
 });
 
-// Fonction utilitaire pour calculer une moyenne
-function moyenne(stats, indices) {
-    const values = indices.map(i => stats[i]);
-    const sum = values.reduce((a, b) => a + b, 0);
-    return Math.round(sum / values.length);
-}
-
-
-
 // 📌 Enregistrement des commandes SLASH
 const commands = [
     {
