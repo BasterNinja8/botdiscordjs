@@ -345,8 +345,8 @@ client.on('interactionCreate', async interaction => {
 
         switch (mode) {
             case 1:
-                force = moyenne(stats[0, 1, 2, 3]);
-                agression = moyenne(stats[4, 5, 6]);
+                force = moyenne(stats, [0, 1, 2, 3]);
+                agression = moyenne(stats, [4, 5, 6]);
             case 2:
                 force = moyenne(stats, [1, 2, 3, 4]);
                 agression = moyenne(stats, [0, 5, 6]);
@@ -374,6 +374,14 @@ client.on('interactionCreate', async interaction => {
             default:
                 return interaction.reply({ content: "❌ Mode invalide. Choisissez un nombre entre 1 et 7.", ephemeral: true });
         }
+
+        function moyenne(stats, indices) {
+        const values = indices.map(i => stats[i]).filter(v => typeof v === 'number');
+        if (values.length === 0) return 0;
+        const sum = values.reduce((a, b) => a + b, 0);
+        return Math.round(sum / values.length);
+        }
+        
 
         const message = `
 📊 **Stats calculées de ${pronom} (Mode ${mode})**  
