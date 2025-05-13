@@ -345,33 +345,32 @@ client.on('interactionCreate', async interaction => {
 
         switch (mode) {
             case 1:
-                force = moyenne(stats, [0, 1, 2, 3]);
-                agression = moyenne(stats, [4, 5, 6]);
-                break;
+                force = moyenne(stats[0, 1, 2, 3]);
+                agression = moyenne(stats[4, 5, 6]);
             case 2:
                 force = moyenne(stats, [1, 2, 3, 4]);
                 agression = moyenne(stats, [0, 5, 6]);
-                break;
+                
             case 3:
                 force = moyenne(stats, [2, 3, 4, 5]);
                 agression = moyenne(stats, [0, 1, 6]);
-                break;
+                
             case 4:
                 force = moyenne(stats, [0, 2, 4, 6]);
                 agression = moyenne(stats, [1, 3, 5]);
-                break;
+                
             case 5:
                 force = moyenne(stats, [0, 1, 5, 6]);
                 agression = moyenne(stats, [2, 3, 4]);
-                break;
+                
             case 6:
                 force = moyenne(stats, [0, 3, 4, 6]);
                 agression = moyenne(stats, [1, 2, 5]);
-                break;
+                
             case 7:
                 force = moyenne(stats, [1, 2, 4, 5]);
                 agression = moyenne(stats, [0, 3, 6]);
-                break;
+                
             default:
                 return interaction.reply({ content: "❌ Mode invalide. Choisissez un nombre entre 1 et 7.", ephemeral: true });
         }
