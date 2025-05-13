@@ -343,8 +343,6 @@ client.on('interactionCreate', async interaction => {
         if (!statsGlobaux[pronom]) {
             return interaction.reply({ content: `❌ Aucune donnée trouvée pour ${pronom}.`, ephemeral: true });
         }
-
-        const stats = statsGlobaux[pronom];
         
         // Récupérer les 7 valeurs (con, tra, men, réa, pré, nst, ene)
         const statsArray = [
