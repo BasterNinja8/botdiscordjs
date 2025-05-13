@@ -352,44 +352,43 @@ client.on('interactionCreate', async interaction => {
         // Calcul des moyennes pour chaque mode
         let result = `📊 **Stats calculées de ${pronom} (Mode 1 à 7)**\n`;
 
-        for (let mode = 1; mode <= 7; mode++) {
-            let force, agression;
-            // Calcul en fonction du mode
-            if (mode === 1) {
-                // Mode 1: 4 premières pour force, 3 dernières pour agression
-                force = (statsArray[0] + statsArray[1] + statsArray[2] + statsArray[3]) / 4;
-                agression = (statsArray[4] + statsArray[5] + statsArray[6]) / 3;
-            } 
-            if (mode === 2) {
-                // Mode 2: 1ère pour agression, 2 dernières pour force, 4 autres pour force
-                force = (statsArray[1] + statsArray[2] + statsArray[3] + statsArray[4]) / 4;
-                agression = (statsArray[0] + statsArray[5] + statsArray[6]) / 3;
-            } 
-            if (mode === 3) {
-                // Mode 3: 2 premières pour agression, 1ère et 3 autres pour force
-                force = (statsArray[0] + statsArray[1] + statsArray[4] + statsArray[5]) / 4;
-                agression = (statsArray[2] + statsArray[3] + statsArray[6]) / 3;
-            } 
-            if (mode === 4) {
-                // Mode 4: 3 premières pour agression, 4 autres pour force
-                force = (statsArray[0] + statsArray[1] + statsArray[2] + statsArray[3]) / 4;
-                agression = (statsArray[4] + statsArray[5] + statsArray[6]) / 3;
-            }
-            if (mode === 5) {
-                // Mode 5: 4 premières pour force, 3 autres pour agression
-                force = (statsArray[0] + statsArray[1] + statsArray[2] + statsArray[3]) / 4;
-                agression = (statsArray[4] + statsArray[5] + statsArray[6]) / 3;
-            }
-            if (mode === 6) {
-                // Mode 6: Décale encore et applique les moyennes
-                force = (statsArray[0] + statsArray[1] + statsArray[4] + statsArray[5]) / 4;
-                agression = (statsArray[2] + statsArray[3] + statsArray[6]) / 3;
-            } 
-            if (mode === 7) {
-                // Mode 7: Dernière variation
-                force = (statsArray[0] + statsArray[1] + statsArray[2] + statsArray[3]) / 4;
-                agression = (statsArray[4] + statsArray[5] + statsArray[6]) / 3;
-            }
+        let force, agression;
+        // Calcul en fonction du mode
+        if (mode === 1) {
+            // Mode 1: 4 premières pour force, 3 dernières pour agression
+            force = (statsArray[0] + statsArray[1] + statsArray[2] + statsArray[3]) / 4;
+            agression = (statsArray[4] + statsArray[5] + statsArray[6]) / 3;
+        } 
+        if (mode === 2) {
+            // Mode 2: 1ère pour agression, 2 dernières pour force, 4 autres pour force
+            force = (statsArray[1] + statsArray[2] + statsArray[3] + statsArray[4]) / 4;
+            agression = (statsArray[0] + statsArray[5] + statsArray[6]) / 3;
+        } 
+        if (mode === 3) {
+            // Mode 3: 2 premières pour agression, 1ère et 3 autres pour force
+            force = (statsArray[0] + statsArray[1] + statsArray[4] + statsArray[5]) / 4;
+            agression = (statsArray[2] + statsArray[3] + statsArray[6]) / 3;
+        } 
+        if (mode === 4) {
+            // Mode 4: 3 premières pour agression, 4 autres pour force
+            force = (statsArray[0] + statsArray[1] + statsArray[2] + statsArray[3]) / 4;
+            agression = (statsArray[4] + statsArray[5] + statsArray[6]) / 3;
+        }
+        if (mode === 5) {
+             // Mode 5: 4 premières pour force, 3 autres pour agression
+            force = (statsArray[0] + statsArray[1] + statsArray[2] + statsArray[3]) / 4;
+            agression = (statsArray[4] + statsArray[5] + statsArray[6]) / 3;
+        }
+        if (mode === 6) {
+            // Mode 6: Décale encore et applique les moyennes
+            force = (statsArray[0] + statsArray[1] + statsArray[4] + statsArray[5]) / 4;
+            agression = (statsArray[2] + statsArray[3] + statsArray[6]) / 3;
+        } 
+        if (mode === 7) {
+            // Mode 7: Dernière variation
+            force = (statsArray[0] + statsArray[1] + statsArray[2] + statsArray[3]) / 4;
+            agression = (statsArray[4] + statsArray[5] + statsArray[6]) / 3;
+        }
     
       
 
