@@ -96,7 +96,7 @@ client.on('interactionCreate', async interaction => {
         }
 
         // Rôle autorisé à bypass la restriction
-        const allowedRoles = ['Staff du serveur']; // 🔹 Mets ici le nom du rôle qui peut faire autant de /up qu'il veut
+        const allowedRoles = ['⚠️ ・Staff']; // 🔹 Mets ici le nom du rôle qui peut faire autant de /up qu'il veut
         const memberRoles = interaction.member.roles.cache.map(role => role.name);
         const hasPrivilege = memberRoles.some(role => allowedRoles.includes(role));
 
@@ -211,7 +211,7 @@ client.on('interactionCreate', async interaction => {
     if (!interaction.isCommand()) return;
 
     if (interaction.commandName === 'bloquerup') {
-        const allowedRoles = ['Staff du serveur']; // 🔹 Ajoute ici les rôles autorisés
+        const allowedRoles = ['⚠️ ・Staff']; // 🔹 Ajoute ici les rôles autorisés
 
         // Vérifie si l'utilisateur possède un des rôles autorisés
         const memberRoles = interaction.member.roles.cache.map(role => role.name);
@@ -335,7 +335,7 @@ Ici, les stats **men** et **tra** seront améliorées de **+0.2** chacune.
 client.on('interactionCreate', async interaction => {
     if (!interaction.isCommand()) return;
     if (interaction.commandName === 'stats') {
-        const allowedRoles = ['Staff du serveur'];
+        const allowedRoles = ['⚠️ ・Staff'];
 
         const memberRoles = interaction.member.roles.cache.map(role => role.name);
         if (!memberRoles.some(role => allowedRoles.includes(role))) {
@@ -501,5 +501,6 @@ const rest = new REST({ version: '10' }).setToken(token);
 client.login(token);
 
 keepAlive(); // Lancer le serveur Express
+
 
 
