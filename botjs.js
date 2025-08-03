@@ -211,7 +211,7 @@ client.on('interactionCreate', async interaction => {
     if (!interaction.isCommand()) return;
 
     if (interaction.commandName === 'bloquerup') {
-        const allowedRoles = ['⚠️ ・Staff']; // 🔹 Ajoute ici les rôles autorisés
+        const allowedRoles = ['Organisateur']; // 🔹 Ajoute ici les rôles autorisés
 
         // Vérifie si l'utilisateur possède un des rôles autorisés
         const memberRoles = interaction.member.roles.cache.map(role => role.name);
@@ -230,7 +230,7 @@ client.on('interactionCreate', async interaction => {
     if (!interaction.isCommand()) return;
 
     if (interaction.commandName === 'fiche') {
-        const allowedRoles = ['1138098099613602013']; // Remplace par l'ID du rôle autorisé
+        const allowedRoles = ['1375369262700433481']; // Remplace par l'ID du rôle autorisé
         const memberRoles = interaction.member.roles.cache.map(role => role.id);
         
         // Vérification des permissions
@@ -335,7 +335,7 @@ Ici, les stats **men** et **tra** seront améliorées de **+0.2** chacune.
 client.on('interactionCreate', async interaction => {
     if (!interaction.isCommand()) return;
     if (interaction.commandName === 'stats') {
-        const allowedRoles = ['⚠️ ・Staff'];
+        const allowedRoles = ['Organisateur'];
 
         const memberRoles = interaction.member.roles.cache.map(role => role.name);
         if (!memberRoles.some(role => allowedRoles.includes(role))) {
@@ -501,6 +501,7 @@ const rest = new REST({ version: '10' }).setToken(token);
 client.login(token);
 
 keepAlive(); // Lancer le serveur Express
+
 
 
 
