@@ -20,7 +20,7 @@ let statsGlobaux = {
     "DIA": {"con": 82.4, "tra": 81.2, "men": 82.0, "réa": 82.0, "pré": 80.4, "nst": 82.0, "ene": 81.4},
     "AIE": {"con": 84.8, "tra": 81.0, "men": 81.0, "réa": 90.1, "pré": 81.0, "nst": 81.0, "ene": 84.8},
     "AUC": {"con": 80.4, "tra": 82.0, "men": 90.4, "réa": 80.4, "pré": 80.4, "nst": 80.8, "ene": 80.8},
-    "GAI": {"con": 83.8, "tra": 81.0, "men": 81.0, "réa": 89.1, "pré": 81.0, "nst": 81.0, "ene": 83.8},,
+    "GAI": {"con": 83.8, "tra": 81.0, "men": 81.0, "réa": 89.1, "pré": 81.0, "nst": 81.0, "ene": 83.8},
     "ROS": {"con": 83.0, "tra": 82.2, "men": 82.0, "réa": 82.0, "pré": 82.0, "nst": 81.0, "ene": 81.0},
     "FED": {"con": 80.0, "tra": 80.2, "men": 80.8, "réa": 80.8, "pré": 80.4, "nst": 81.2, "ene": 82.4},
     "CRO": {"con": 82.2, "tra": 90.8, "men": 80.0, "réa": 80.0, "pré": 80.0, "nst": 80.0, "ene": 80.0},
@@ -501,4 +501,5 @@ const rest = new REST({ version: '10' }).setToken(token);
 client.login(token);
 
 keepAlive(); // Lancer le serveur Express
+
 
