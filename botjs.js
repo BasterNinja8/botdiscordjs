@@ -233,48 +233,47 @@ client.on('interactionCreate', async interaction => {
         // Création de l'embed (même style que /up)
         let responseMessage = `
         # **DRIVER FICHE**
-        
-        **Nom pilote** : ${prenom} ${nom}
-        **Sexe** : ${sexe}
-        **Catégorie** : ${categorie}
-        
-        --------------------------
-        
-        
-        ┌
-                  ${noteGenerale}          NOTE
-                             générale
-        └
-        
-        ╭→     CON                    ${stats['con'].toFixed(1)}    ┐
-        ┊       concentration
-        ┊
-        ┊→     TRA                    ${stats['tra'].toFixed(1)}
-        ┊       trajectoire                   ┘
-        ╰
-        
-        ╭→     MEN                    ${stats['men'].toFixed(1)}       ┐
-        ┊       mentalité
-        ┊
-        ┊→     RÉA                    ${stats['réa'].toFixed(1)} 
-        ┊       réaction
-        ┊
-        ┊→     PRÉ                   ${stats['pré'].toFixed(1)}
-        ┊       précision                         ┘
-        ╰
-        
-        ╭
-        ┊→       NST                    ${stats['nst'].toFixed(1)}
-        ┊         no stress
-        ┊
-        ┊→       ENE                    ${stats['ene'].toFixed(1)}
-        ┊         energie
-        ╰
-       
-          ***OFFICIAL STATS***
-        
-        ------------------------------------------
-        Besoin d’aide ? Merci de faire la commande \`/aide\`
+
+**Nom pilote** : ${prenom} ${nom}
+**Sexe** : ${sexe}
+**Catégorie** : ${categorie}
+
+--------------------------
+
+┌
+          ${noteGenerale.toFixed(1)}          NOTE
+                     générale
+└
+
+╭→     CON                    ${stats['con'].toFixed(1)}    ┐
+┊       concentration
+┊
+┊→     TRA                    ${stats['tra'].toFixed(1)}
+┊       trajectoire                   ┘
+╰
+
+╭→     MEN                    ${stats['men'].toFixed(1)}       ┐
+┊       mentalité
+┊
+┊→     RÉA                    ${stats['réa'].toFixed(1)} 
+┊       réaction
+┊
+┊→     PRÉ                   ${stats['pré'].toFixed(1)}
+┊       précision                         ┘
+╰
+
+╭
+┊→       NST                    ${stats['nst'].toFixed(1)}
+┊         no stress
+┊
+┊→       ENE                    ${stats['ene'].toFixed(1)}
+┊         energie
+╰
+
+  ***OFFICIAL STATS***
+
+------------------------------------------
+Besoin d’aide ? Merci de faire la commande \`/aide\`
                 `;
 
         // Envoi de la fiche
@@ -481,6 +480,7 @@ const rest = new REST({ version: '10' }).setToken(token);
 client.login(token);
 
 keepAlive(); // Lancer le serveur Express
+
 
 
 
